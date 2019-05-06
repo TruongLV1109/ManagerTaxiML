@@ -14,7 +14,7 @@ class CreateDriversTable extends Migration
     public function up()
     {
         Schema::create('drivers', function (Blueprint $table) {
-            $table->char('DriverCd',6);
+            $table->char('DriverCd',10);
             $table->string('DriverNm',200)->nullable();
             $table->string('Birthday',8)->nullable();
             $table->string('Address',500)->nullable();

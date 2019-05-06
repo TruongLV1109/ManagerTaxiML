@@ -55,15 +55,14 @@ sl-active
               </div>
             </th>
             <th scope="col">STT</th>
-            <th scope="col">Mã Sách</th>
-            <th scope="col">Tên Sách</th>
-            <th scope="col">Loại Sách</th>
-            <th scope="col">Tác Giả</th>
-            <th scope="col">NXB</th>
-            <th scope="col">Năm XB</th>
-            <th scope="col">Lần XB</th>
-            <th scope="col">Số Lượng</th>
-            <th scope="col">Giá Tiền</th>
+            <th scope="col">Mã số lái xe</th>
+            <th scope="col">Họ tên lái xe</th>
+            <th scope="col">Ngày sinh</th>
+            <th scope="col">Địa chỉ</th>
+            <th scope="col">Ngày vào làm</th>
+            <th scope="col">Cmnd</th>
+            <th scope="col">Ghi chú</th>
+            <th scope="col">Trạng thái</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -72,22 +71,21 @@ sl-active
           <tr class="tr-info">
             <th scope="row">
               <div class="checkbox checkbox-primary">
-                <input type="checkbox" class="check" name="check[]" value="{$book->id}}">
+                <input type="checkbox" class="check" name="check[]" value="{{$driver['DriverCd']}}">
               </div>
             </th>
-            <td>{++$stt}}</td>
-            <td>{$book->maSoSach}}</td>
-            <td>{$book->tenSach}}</td>
-            <td>{$book->loaiSach}}</td>
-            <td>{$book->tacGia}}</td>
-            <td>{$book->hoTenNXB}}</td>
-            <td>{$book->namXB}}</td>
-            <td>{$book->lanXB}}</td>
-            <td>{$book->soLuong}}</td>
-            <td>{$book->giaTien}}</td>
+            <td>{{++$stt}}</td>
+            <td>{{$driver["DriverCd"]}}</td>
+            <td>{{$driver["DriverNm"]}}</td>
+            <td>{{$driver["Birthday"]}}</td>
+            <td>{{$driver["Address"]}}</td>
+            <td>{{$driver["DayWork"]}}</td>
+            <td>{{$driver["Cmnd"]}}</td>
+            <td>{{$driver["Notes"]}}</td>
+            <td>{{$driver["Status"]}}</td>s
             <td class="action-button">
-              <a class="btn btn-primary" href="{action('BookController@getManagerBook_Edit',$book->id)}}"><i class="fa fa-edit"></i></a>
-              <a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');" href="{action('BookController@getManagerBook_Delete',$book->id)}}"><i class="fa fa-trash"></i></a>
+              <a class="btn btn-primary" href="{{action('DriverController@getManagerDriver_Edit',$driver['DriverCd'])}}"><i class="fa fa-edit"></i></a>
+              <a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');" href="{{action('DriverController@getManagerDriver_Delete',$driver['DriverCd'])}}"><i class="fa fa-trash"></i></a>
             </td>
           </tr>
           @endforeach

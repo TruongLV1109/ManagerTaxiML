@@ -51,12 +51,6 @@
 						</a>
 					</li>
 					<div class="collapse @yield("collapseBorrowGiveBack")" id="menu2">
-						<li class="nav-item @yield("menu-borrowBook")">
-							<a class="nav-link" href="{{route('get.borrowBook')}}" data-parent="#menu2"><i class="fas fa-edit"></i><span>Tạo phiếu mượn</span></a>
-						</li>
-						<li class="nav-item @yield("menu-payBook")">
-							<a class="nav-link" href="{{route('get.payBook')}}" data-parent="#menu2"><i class="fas fa-clipboard-check"></i><span>Duyệt phiếu trả</span></a>
-						</li>
 						<li class="nav-item @yield("menu-manager-driver")">
 						<a class="nav-link" href="{{route('get.manager.driver')}}">
 							<i class="fas fa-book"></i>
@@ -64,10 +58,16 @@
 						</a>
 						</li>
 						<li class="nav-item @yield("menu-manager-readers")">
-							<a class="nav-link" href="{{route('get.manager.readers')}}" data-parent="#menu2"><i class="fas fa-book-reader"></i><span>Quản lý độc giả</span></a>
+							<a class="nav-link" href="{{route('get.manager.readers')}}" data-parent="#menu2"><i class="fas fa-book-reader"></i><span>Quản lý hợp đồng</span></a>
 						</li>
 						<li class="nav-item @yield("menu-manager-publisher")">
-							<a class="nav-link" href="{{route('get.manager.publisher')}}" data-parent="#menu2"><i class="fas fa-user-tie"></i><span>Quản lý nhà xuất bản</span></a>
+							<a class="nav-link" href="{{route('get.manager.publisher')}}" data-parent="#menu2"><i class="fas fa-user-tie"></i><span>Quản lý giấp phép</span></a>
+						</li>
+						<li class="nav-item @yield("menu-manager-readers")">
+							<a class="nav-link" href="{{route('get.manager.readers')}}" data-parent="#menu2"><i class="fas fa-clipboard-check"></i><span>Quản lý lỗi lái xe</span></a>
+						</li>
+						<li class="nav-item @yield("menu-manager-publisher")">
+							<a class="nav-link" href="{{route('get.manager.publisher')}}" data-parent="#menu2"><i class="fas fa-edit"></i><span>Quản lý bảo hiểm lái xe</span></a>
 						</li>
 						<li class="nav-item @yield("menu-manager-statistical")">
 							<a class="nav-link" href="{{route('get.manager.statistical')}}" data-parent="#menu2"><i class="fas fa-chart-bar"></i><span>Thống kê</span></a>

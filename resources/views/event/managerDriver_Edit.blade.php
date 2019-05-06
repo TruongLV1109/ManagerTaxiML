@@ -1,6 +1,7 @@
 @extends('index')
 
-@section("menu-manager-driver")
+
+@section("menu-manager-book")
 sl-active
 @endsection
 
@@ -13,7 +14,7 @@ sl-active
     <a href="{{route('get.manager.driver')}}">Hồ sơ lái xe</a>
   </li>
   <li class="breadcrumb-item active">
-    Thêm mới
+    Sửa thông tin
   </li> 
 </ol>
 @endsection
@@ -22,15 +23,15 @@ sl-active
 <div class="container-fluid">
  <div class="card">
   <div class="card-body">
-    <h2 class="text-center">Thêm mới lái xe</h2>
-    <br/>  
+    <h2 class="text-center">Sửa thông tin lái xe</h2>
+    <br/> 
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           @if ($errors->any())
           <div class="alert alert-danger alert-dismissible">
             <a href="javascript:void(0)" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-             <ul>
+            <ul>
               @foreach ($errors->all() as $error)
               <li>{{ $error }}</li>
               @endforeach
@@ -46,35 +47,36 @@ sl-active
         </div>
       </div>
     </div> 
-    <form action="{{route('post.manager.driver.add')}}" method="POST" class="form-horizontal" role="form">
+    <form action="{action('BookController@postManagerBook_Edit', $id)}}" method="POST" class="form-horizontal" role="form">
       @method('post')
       @csrf
-    <div class="row">
+      @foreach($driver as $driver1)
+     <div class="row">
         <div class="col-sm-8">
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group" style="display: none;">
                 <label class="col-sm-12 control-label" for="">Mã số lái xe</label>
                 <div class="col-sm-12">
-                  <input class="form-control" name="DriverCd" type="text">
+                  <input class="form-control" name="DriverCd" type="text" value="{{$driver1->DriverCd}}">
                 </div>
               </div> <!-- end form-group -->
               <div class="form-group">
                 <label class="col-sm-12 control-label" for="">Họ tên lái xe</label>
                 <div class="col-sm-12">
-                  <input class="form-control" name="DriverNm" type="text">
+                  <input class="form-control" name="DriverNm" type="text" value="{{$driver1->DriverNm}}">
                 </div>
               </div> <!-- end form-group -->
               <div class="form-group">
                 <label class="col-sm-12 control-label" for="">Ngày sinh</label>
                 <div class="col-sm-12">
-                  <input class="form-control" name="Birthday" type="text">
+                  <input class="form-control" name="Birthday" type="text" value="{{$driver1->Birthday}}">
                 </div>
               </div> <!-- end form-group --> 
               <div class="form-group">
                 <label class="col-sm-12 control-label" for="">Chứng minh nhân dân</label>
                 <div class="col-sm-12">
-                  <input class="form-control" name="Cmnd" type="text">
+                  <input class="form-control" name="Cmnd" type="text" value="{{$driver1->Cmnd}}">
                 </div>
               </div> <!-- end form-group --> 
             </div>
@@ -82,19 +84,19 @@ sl-active
               <div class="form-group">
                 <label class="col-sm-12 control-label" for="">Địa chỉ</label>
                 <div class="col-sm-12">
-                  <input class="form-control" name="Address" type="text">
+                  <input class="form-control" name="Address" type="text" value="{{$driver1->Address}}">
                 </div>
               </div> <!-- end form-group -->
               <div class="form-group">
                 <label class="col-sm-12 control-label" for="">Ngày vào làm</label>
                 <div class="col-sm-12">
-                  <input class="form-control" name="DayWork" type="text">
+                  <input class="form-control" name="DayWork" type="text" value="{{$driver1->DayWork}}">
                 </div>
               </div> <!-- end form-group --> 
               <div class="form-group">
                 <label class="col-sm-12 control-label" for="">Trạng thái</label>
                 <div class="col-sm-12">
-                  <input class="form-control" name="Status" type="text">
+                  <input class="form-control" name="Status" type="text" value="{{$driver1->Status}}">
                 </div>
               </div> <!-- end form-group --> 
              </div>
@@ -104,7 +106,7 @@ sl-active
            <div class="form-group">
             <label class="col-sm-12 control-label" for="">Ghi chú</label>
             <div class="col-sm-12">
-              <textarea class="form-control" name="Notes" data-maxlength="500" cols="100" rows="8" style="height: 211px;width: 160%;"></textarea>
+              <textarea class="form-control" name="Notes" data-maxlength="500" cols="100" rows="8" style="height: 211px;width: 160%;">{{$driver1->Notes}}</textarea>
             </div>
           </div>
         </div>
@@ -128,6 +130,7 @@ sl-active
       </div>
     </div>
   </div>
+  @endforeach
 </form>
 </div>
 </div>
@@ -137,7 +140,7 @@ sl-active
 
 @section('scriptBottom')
 <script> 
-  function AutoUpload() {
+ function AutoUpload() {
    var avatar = document.getElementById("avatar").value;
    var img = document.getElementById("img");
    var avatarHidden = document.getElementById("avatarHidden");

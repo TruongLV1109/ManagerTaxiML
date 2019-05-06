@@ -27,9 +27,9 @@ Route::group(['prefix'=>'manager','middleware'=>'login'], function() {
 	Route::group(['prefix'=>'Driver'], function() {
 		Route::get('','DriverController@getManagerDriver')->name('get.manager.driver');
 		Route::get('Add','DriverController@getManagerDriver_Add')->name('get.manager.driver.add');
-		// Route::get('Edit/{id}','DriverController@getManagerBook_Edit')->name('get.manager.book.edit');
-		// Route::get('Delete/{id}','DriverController@getManagerBook_Delete')->name('get.manager.book.delete');
-		// Route::post('Add','DriverController@postManagerBook_Add')->name('post.manager.book.add');
+		Route::get('Edit/{id}','DriverController@getManagerDriver_Edit')->name('get.manager.driver.edit');
+		Route::get('Delete/{id}','DriverController@getManagerDriver_Delete')->name('get.manager.driver.delete');
+		 Route::post('Add','DriverController@postManagerDriver_Add')->name('post.manager.driver.add');
 		// Route::post('Edit/{id}','DriverController@postManagerBook_Edit')->name('post.manager.book.edit');
 		// Route::post('','DriverController@postManagerBook_Search')->name('post.manager.book.search');
 	});
