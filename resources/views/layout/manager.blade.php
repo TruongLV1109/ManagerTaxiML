@@ -10,8 +10,8 @@
 						<i class="far fa-bookmark"></i>
 					</div>
 					<div class="ml-3">
-						<div class="text-muted small">Phiếu mượn trong ngày</div>
-						<div class="text-large">{{-- {{$numberBorrowToDay}} --}}</div>
+						<div class="text-muted small">Số lượng xe đang chạy</div>
+						<div class="text-large">156{{-- {{$numberBorrowToDay}} --}}</div>
 					</div>
 				</div>
 			</div>
@@ -23,8 +23,8 @@
 						<i class="fas fa-check"></i>
 					</div>
 					<div class="ml-3">
-						<div class="text-muted small">Phiếu trả trong ngày</div>
-						<div class="text-large">{{-- {{$numberGiveToDay}} --}}</div>
+						<div class="text-muted small">Số lượng xe đang đỗ</div>
+						<div class="text-large">20{{-- {{$numberGiveToDay}} --}}</div>
 					</div>
 				</div>
 			</div>
@@ -36,8 +36,8 @@
 						<i class="fas fa-user-times"></i>
 					</div>
 					<div class="ml-3">
-						<div class="text-muted small">Phiếu trễ hẹn</div>
-						<div class="text-large">{{-- {{$numberDelay}} --}}</div>
+						<div class="text-muted small">Doanh thu trong tháng</div>
+						<div class="text-large">56.000.000 VNĐ{{-- {{$numberDelay}} --}}</div>
 					</div>
 				</div>
 			</div>
@@ -49,8 +49,8 @@
 						<i class="fas fa-user-friends"></i>
 					</div>
 					<div class="ml-3">
-						<div class="text-muted small">Số lượng độc giả</div>
-						<div class="text-large">{{-- {{$numberReaders}} --}}</div>
+						<div class="text-muted small">Số khách hàng trong tháng</div>
+						<div class="text-large">560{{-- {{$numberReaders}} --}}</div>
 					</div>
 				</div>
 			</div>
@@ -134,7 +134,7 @@ Highcharts.chart('container', {
     yAxis: {
         min: 0,
         title: {
-            text: 'Số phiếu'
+            text: 'Số lượng khách hàng'
         }
     },
     tooltip: {
@@ -152,12 +152,12 @@ Highcharts.chart('container', {
         }
     },
     series: [{
-        name: 'Phiếu mượn',
-        data: [/*{$strYeahBorow2018}}*/]
+        name: 'Hài lòng',
+        data: [50,70,55,60,100,60,50,60,70,50,56,78] /*{$strYeahBorow2018}}*/
 
     }, {
-        name: 'phiếu trả',
-        data: [/*{$strYeahGiveBook2018}}*/]
+        name: 'Không hài lòng',
+        data: [10,6,2,5,2,10,9,5,10,2,13,5] /*{$strYeahGiveBook2018}}*/
 
     }]
 });

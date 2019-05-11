@@ -20,66 +20,71 @@ class DriverController extends Controller
     }
 
     public function postManagerDriver_Add(Request $request){
+
      $driver = $this->validate(request(), [
-       'DriverCd'	=> 'nullable|max:10',
-       'DriverNm'   => 'nullable|max:200',
-       'Birthday'   => 'nullable|max:8',
-       'Cmnd'       => 'nullable|max:50',
-       'Address'    => 'nullable|max:500',
-       'DayWork'    => 'nullable|max:8',
-       'Status'     => 'nullable|max:50',
-       'Notes'		=> 'nullable|max:1000',
-       'Avatar'     => 'nullable|max:500'
+       'DriverNo'   	=> 'required|max:50',
+       'DriverName'   => 'required|max:200',
+       'Birthday'     => 'required|date',
+       'Address'      => 'required|max:500',
+       'FrWork'       => 'required|date',
+       'Cmnd'         => 'required|max:50',
+       'Sex'          => 'required|max:1|numeric',
+       'Phone'        => 'required|numeric',
+       'idUser'       => '',
+       'Email'        => 'nullable|max:200',
+       'Status'       => 'required|numeric',
+       'Notes'		    => 'nullable|max:1000',
+       'Avatar'       => 'nullable|max:500'
    ]
    ,[
-    'required'  => ':attribute không được để trống',
-    'max' 		=> ':attribute không được lớn hơn :max'
+       'required'   => ':attribute không được để trống',
+       'max' 		    => ':attribute không được lớn hơn :max'
 	],
 	[
-		'DriverCd' => 'Mã lái xe',
-		'DriverNm' => 'Họ tên lái xe',
-	    'Birthday' => 'Nhà xuất bản',
-	    'Cmnd'	   => 'Chứng minh nhân dân',
-	    'Address'  => 'Ngày sinh',
-	    'DayWork'  => 'Ngày vào làm',
-	    'Status'   => 'Trạng thái',
-	    'Notes'    => 'Ghi chú',
-	    'Avatar'   => 'Ảnh'
+		  'DriverNo'    => 'Mã lái xe',
+		  'DriverName'  => 'Họ tên lái xe',
+	    'Birthday'    => 'Ngày sinh',
+	    'Address'     => 'Địa chỉ',
+      'DayWork'     => 'Ngày vào làm',
+      'Cmnd'        => 'Chứng minh nhân dân',
+      'Sex'         => 'Giới tính',
+      'Phone'       => 'Số điện thoại',
+      'idUser'      => 'Mã người dùng',
+      'Email'       => 'Email',
+	    'Status'      => 'Trạng thái',
+	    'Notes'       => 'Ghi chú',
+	    'Avatar'      => 'Ảnh'
 	]);
 
-    $today = date("ymd");   
 
-	$driverSeq = substr(DB::table('drivers')
-    ->select('drivers.DriverCd')
-    ->where('drivers.DriverCd','LIKE','%' . $today . '%')
-    ->get()->max('DriverCd'), 6);
+  $driver['Birthday'] = date("Y-m-d",strtotime($driver['Birthday'])); 
+  $driver['FrWork']   = date("Y-m-d",strtotime($driver['FrWork']));
 
-    $seq = $driverSeq;
+  $name  = $driver['DriverName'];
+  $email = $driver['Email'];
+  $level = 0;
+  $username = $driver['Phone'];
+  $password = $driver['DriverNo'];
+  $aUser = [$name, $email, $level, $username, bcrypt($password)];
 
-    if($seq == ''){
-     	$seq = "0001";
-    }else {
-     	$seq = str_pad(((int)$seq + 1), 4, '0', STR_PAD_LEFT);
-    }
 
-    $driverCd = $today . $seq;
+  $uSel = DB::table('users')->select('users.id')->where('users.username','LIKE','%' . $username . '%')->get();
 
-    $driver["DriverCd"] = $driverCd;
+  if(count($uSel) == 0){
+    DB::insert('insert into users (name, email, level, username, password) values (?, ?, ?, ?, ?)', $aUser);
+    $uSel = DB::table('users')->select('users.id')->where('users.username','LIKE','%' . $username . '%')->get();
+  } 
+
+  $driver["idUser"] = $uSel[0]->id;
 
 	Driver::create($driver);
 
-     return back()->with('success', 'Thêm thành công mã số lái xe: ' . $driverCd);
-
+  return back()->with('success', 'Thêm thành công !!');
   }
 
-  public function getManagerDriver_Edit($DriverCd){
-
-	  $driver = DB::table('drivers')
-        ->select('*')
-        ->where('drivers.DriverCd','=', $DriverCd)
-        ->get();
-
-	  return view("event.managerDriver_Edit",compact('driver','DriverCd'));
+  public function getManagerDriver_Edit($id){
+  $driver = Driver::find($id);
+  return view("event.managerDriver_Edit",compact('driver','id'));
   }
 
   public function getManagerDriver_Delete($DriverCd){

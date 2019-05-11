@@ -61,8 +61,11 @@ sl-active
             <th scope="col">Địa chỉ</th>
             <th scope="col">Ngày vào làm</th>
             <th scope="col">Cmnd</th>
-            <th scope="col">Ghi chú</th>
+            <th scope="col">Giới tính</th>
+            <th scope="col">Điện thoại</th>
+            <th scope="col">Email</th>
             <th scope="col">Trạng thái</th>
+            <th scope="col">Ghi chú</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -71,21 +74,24 @@ sl-active
           <tr class="tr-info">
             <th scope="row">
               <div class="checkbox checkbox-primary">
-                <input type="checkbox" class="check" name="check[]" value="{{$driver['DriverCd']}}">
+                <input type="checkbox" class="check" name="check[]" value="{{$driver['id']}}">
               </div>
             </th>
             <td>{{++$stt}}</td>
-            <td>{{$driver["DriverCd"]}}</td>
-            <td>{{$driver["DriverNm"]}}</td>
+            <td>{{$driver["DriverNo"]}}</td>
+            <td>{{$driver["DriverName"]}}</td>
             <td>{{$driver["Birthday"]}}</td>
             <td>{{$driver["Address"]}}</td>
-            <td>{{$driver["DayWork"]}}</td>
+            <td>{{$driver["FrWork"]}}</td>
             <td>{{$driver["Cmnd"]}}</td>
+            <td>{{$driver["Sex"]}}</td>
+            <td>{{$driver["Phone"]}}</td>
+            <td>{{$driver["Email"]}}</td>
+            <td>{{$driver["Status"]}}</td>
             <td>{{$driver["Notes"]}}</td>
-            <td>{{$driver["Status"]}}</td>s
             <td class="action-button">
-              <a class="btn btn-primary" href="{{action('DriverController@getManagerDriver_Edit',$driver['DriverCd'])}}"><i class="fa fa-edit"></i></a>
-              <a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');" href="{{action('DriverController@getManagerDriver_Delete',$driver['DriverCd'])}}"><i class="fa fa-trash"></i></a>
+              <a class="btn btn-primary" href="{{action('DriverController@getManagerDriver_Edit',$driver['id'])}}"><i class="fa fa-edit"></i></a>
+              <a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');" href="{{action('DriverController@getManagerDriver_Delete',$driver['id'])}}"><i class="fa fa-trash"></i></a>
             </td>
           </tr>
           @endforeach

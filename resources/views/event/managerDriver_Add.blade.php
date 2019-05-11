@@ -1,5 +1,11 @@
 @extends('index')
 
+@section("datepicker")
+<link href="{{asset('vendor/dist/css/datepicker.min.css')}}" rel="stylesheet" type="text/css">
+<script src="{{asset('vendor/dist/js/datepicker.min.js')}}"></script>
+<script src="{{asset('vendor/dist/js/i18n/datepicker.en.js')}}"></script>
+@endsection
+
 @section("menu-manager-driver")
 sl-active
 @endsection
@@ -53,26 +59,33 @@ sl-active
         <div class="col-sm-8">
           <div class="row">
             <div class="col-sm-6">
-              <div class="form-group" style="display: none;">
-                <label class="col-sm-12 control-label" for="">Mã số lái xe</label>
+              <div class="form-group">
+                <label class="col-sm-12 d-b c-red control-label" for="">Mã số lái xe</label>
                 <div class="col-sm-12">
-                  <input class="form-control" name="DriverCd" type="text">
+                  <input class="form-control" name="DriverNo" type="text">
                 </div>
               </div> <!-- end form-group -->
               <div class="form-group">
-                <label class="col-sm-12 control-label" for="">Họ tên lái xe</label>
+                <label class="col-sm-12 d-b c-red control-label" for="">Họ tên lái xe</label>
                 <div class="col-sm-12">
-                  <input class="form-control" name="DriverNm" type="text">
-                </div>
-              </div> <!-- end form-group -->
-              <div class="form-group">
-                <label class="col-sm-12 control-label" for="">Ngày sinh</label>
-                <div class="col-sm-12">
-                  <input class="form-control" name="Birthday" type="text">
+                  <input class="form-control" name="DriverName" type="text">
                 </div>
               </div> <!-- end form-group --> 
               <div class="form-group">
-                <label class="col-sm-12 control-label" for="">Chứng minh nhân dân</label>
+                <label class="col-sm-12 d-b c-red control-label" for="">Ngày Sinh</label>
+                <div class="col-sm-12"><input class="form-control datepicker-here" name="Birthday" type="text" data-language='en'></div>
+              </div> <!-- end form-group -->
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <label class="control-label d-b c-red">Giới Tính</label>
+                  <select class="form-control" name="Sex">
+                    <option value="1">Nam</option>
+                    <option value="0">Nữ</option>
+                  </select>
+                </div>
+              </div> <!-- end form-group -->
+              <div class="form-group">
+                <label class="col-sm-12 d-b c-red control-label" for="">Chứng minh nhân dân</label>
                 <div class="col-sm-12">
                   <input class="form-control" name="Cmnd" type="text">
                 </div>
@@ -80,21 +93,41 @@ sl-active
             </div>
             <div class="col-sm-6">
               <div class="form-group">
-                <label class="col-sm-12 control-label" for="">Địa chỉ</label>
+                <label class="col-sm-12 d-b c-red control-label" for="">Số điện thoại</label>
+                <div class="col-sm-12">
+                  <input class="form-control" name="Phone" type="text">
+                </div>
+              </div> <!-- end form-group -->
+              <div class="form-group d-n">
+                <label class="col-sm-12 c-red control-label" for="">idUser</label>
+                <div class="col-sm-12">
+                  <input class="form-control" name="idUser" type="text">
+                </div>
+              </div> <!-- end form-group -->
+              <div class="form-group">
+                <label class="col-sm-12 d-b c-red control-label" for="">Địa chỉ</label>
                 <div class="col-sm-12">
                   <input class="form-control" name="Address" type="text">
                 </div>
               </div> <!-- end form-group -->
               <div class="form-group">
-                <label class="col-sm-12 control-label" for="">Ngày vào làm</label>
-                <div class="col-sm-12">
-                  <input class="form-control" name="DayWork" type="text">
-                </div>
-              </div> <!-- end form-group --> 
+                <label class="col-sm-12 d-b c-red control-label" for="">Ngày vào làm</label>
+                <div class="col-sm-12"><input class="form-control datepicker-here" name="FrWork" type="text" data-language='en'></div>
+              </div> <!-- end form-group -->
               <div class="form-group">
-                <label class="col-sm-12 control-label" for="">Trạng thái</label>
                 <div class="col-sm-12">
-                  <input class="form-control" name="Status" type="text">
+                  <label class="control-label d-b c-red">Trạng thái lái xe</label>
+                  <select class="form-control" name="Status">
+                    <option value="0">Ứng tuyển</option>
+                    <option value="1">Nhân viên</option>
+                    <option value="2">Nghỉ làm</option>
+                  </select>
+                </div>
+              </div> <!-- end form-group -->
+              <div class="form-group">
+                <label class="col-sm-12 d-b control-label" for="">Email</label>
+                <div class="col-sm-12">
+                  <input class="form-control" name="Email" type="text">
                 </div>
               </div> <!-- end form-group --> 
              </div>
@@ -102,7 +135,7 @@ sl-active
         <div class="row">
           <div class="col-sm-8">
            <div class="form-group">
-            <label class="col-sm-12 control-label" for="">Ghi chú</label>
+            <label class="col-sm-12 d-b control-label" for="">Ghi chú</label>
             <div class="col-sm-12">
               <textarea class="form-control" name="Notes" data-maxlength="500" cols="100" rows="8" style="height: 211px;width: 160%;"></textarea>
             </div>

@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 	{{-- <link rel="stylesheet" href="{{asset('vendor/fade/bootstrap.css')}}"> --}}
-	<link rel="stylesheet" href="{{asset('vendor/2.2.css')}}">
+	<link rel="stylesheet" href="{{asset('vendor/2.css')}}">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
@@ -38,10 +38,13 @@
 					</li>
 					<div class="collapse @yield("collapseBorrowGiveBack")" id="menu1">
 						<li class="nav-item @yield("menu-manager-borrowBook")">
-							<a class="nav-link" href="{{route('get.manager.borrowBook')}}" data-parent="#menu1"><i class="fa fa-tasks"></i><span>bla1</span></a>
+							<a class="nav-link" href="{{route('get.manager.borrowBook')}}" data-parent="#menu1"><i class="fa fa-tasks"></i><span>Thông tin khách hàng</span></a>
+						</li>
+						<li class="nav-item @yield("menu-manager-borrowBook")">
+							<a class="nav-link" href="{{route('get.manager.borrowBook')}}" data-parent="#menu1"><i class="fa fa-tasks"></i><span>Tài khoản khách hàng</span></a>
 						</li>
 						<li class="nav-item @yield("menu-manager-giveBack")">
-							<a class="nav-link" href="{{route('get.manager.giveBack')}}" data-parent="#menu1"><i class="fa fa-tasks"></i><span>bla2</span></a>
+							<a class="nav-link" href="{{route('get.manager.giveBack')}}" data-parent="#menu1"><i class="fa fa-tasks"></i><span>Danh sách đen</span></a>
 						</li>
 					</div>
 					<li class="nav-item @yield("menu-manager-borrowGiveBack")">
@@ -68,6 +71,40 @@
 						</li>
 						<li class="nav-item @yield("menu-manager-publisher")">
 							<a class="nav-link" href="{{route('get.manager.publisher')}}" data-parent="#menu2"><i class="fas fa-edit"></i><span>Quản lý bảo hiểm lái xe</span></a>
+						</li>
+						<li class="nav-item @yield("menu-manager-statistical")">
+							<a class="nav-link" href="{{route('get.manager.statistical')}}" data-parent="#menu2"><i class="fas fa-chart-bar"></i><span>Thống kê</span></a>
+						</li>
+					</div>
+					<li class="nav-item @yield("menu-manager-borrowGiveBack")">
+						<a href="#menu3" class="nav-link collapsed" data-toggle="collapse" aria-expanded=@section('booleanAria')"false"@show>
+							<i class="far fa-calendar-alt"></i>
+							<span>Quản lý xe</span>
+						</a>
+					</li>
+					<div class="collapse @yield("collapseBorrowGiveBack")" id="menu3">
+						<li class="nav-item @yield("menu-manager-borrowBook")">
+							<a class="nav-link" href="{{route('get.manager.borrowBook')}}" data-parent="#menu3"><i class="fa fa-tasks"></i><span>Thông tin xe</span></a>
+						</li>
+						<li class="nav-item @yield("menu-manager-borrowBook")">
+							<a class="nav-link" href="{{route('get.manager.borrowBook')}}" data-parent="#menu3"><i class="fa fa-tasks"></i><span>Quản lý đăng kiểm</span></a>
+						</li>
+						<li class="nav-item @yield("menu-manager-giveBack")">
+							<a class="nav-link" href="{{route('get.manager.giveBack')}}" data-parent="#menu3"><i class="fa fa-tasks"></i><span>Quản lý nhiên liệu xe</span></a>
+						</li>
+						<li class="nav-item @yield("menu-manager-statistical")">
+							<a class="nav-link" href="{{route('get.manager.statistical')}}" data-parent="#menu2"><i class="fas fa-chart-bar"></i><span>Thống kê</span></a>
+						</li>
+					</div>
+					<li class="nav-item @yield("menu-manager-borrowGiveBack")">
+						<a href="#menu4" class="nav-link collapsed" data-toggle="collapse" aria-expanded=@section('booleanAria')"false"@show>
+							<i class="far fa-calendar-alt"></i>
+							<span>Quản lý tài chính</span>
+						</a>
+					</li>
+					<div class="collapse @yield("collapseBorrowGiveBack")" id="menu4">
+						<li class="nav-item @yield("menu-manager-borrowBook")">
+							<a class="nav-link" href="{{route('get.manager.borrowBook')}}" data-parent="#menu4"><i class="fa fa-tasks"></i><span>Chấm công nhân viên</span></a>
 						</li>
 						<li class="nav-item @yield("menu-manager-statistical")">
 							<a class="nav-link" href="{{route('get.manager.statistical')}}" data-parent="#menu2"><i class="fas fa-chart-bar"></i><span>Thống kê</span></a>

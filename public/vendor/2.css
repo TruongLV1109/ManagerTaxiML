@@ -93,14 +93,12 @@ ul.navbar-nav.animate.side-nav.page-sider-menu li.nav-item a.nav-link[aria-expan
   }
   select.form-control {
     padding: 2px;
-    padding-left: 2px;
-    padding-left: 2px;
     border: 1px solid #ada7a7;
     border-radius: 7px;
-    margin-top: 10px;
     padding-left: 10px;
-    width: 105%;
-    margin-bottom: 18px;
+    width: 104%;
+    height: 35px;
+    margin-bottom: -8px;
   }
 
   .detail-user {
@@ -316,7 +314,19 @@ ul.navbar-nav.animate.side-nav.page-sider-menu li.nav-item a.nav-link[aria-expan
 
   .ml-12 {
     margin-left: 12px;
-}
+ }
+
+ .c-red {
+    color: red;
+ }
+
+  .d-b {
+    display: block;
+  }
+
+  .d-n {
+    display: none;
+  }
 
   
   .action-button a.btn.btn-primary.waves-effect.waves-light {
@@ -411,7 +421,7 @@ ul.navbar-nav.animate.side-nav.page-sider-menu a.nav-link.waves-effect.waves-lig
     }
 
     .lnr-cart::before {
-      content: "ÃƒÂ® Ã‚Â®";
+      content: "ÃƒÆ’Ã‚Â® Ãƒâ€šÃ‚Â®";
     }
 
 

@@ -86,7 +86,7 @@ Route::group(['prefix'=>'manager','middleware'=>'login'], function() {
 			Route::get('Add','UsersController@getManagerUsers_Add')->name('get.manager.users.add');
 			Route::post('Add','UsersController@postManagerUsers_Add')->name('post.manager.users.add');
 			Route::get('detail/{id}','UsersController@Show')->name('get.manager.users.show');
-			Route::get('Delete/{id}','UsersController@getManagerUsers_Delete')->name('get.manager.users.delete');
+			Route::get('Edit/{id}','UsersController@getManagerUsers_Edit')->name('get.manager.users.edit');
 		});
 	});
 

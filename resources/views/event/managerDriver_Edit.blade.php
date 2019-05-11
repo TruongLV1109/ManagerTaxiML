@@ -50,53 +50,79 @@ sl-active
     <form action="{action('BookController@postManagerBook_Edit', $id)}}" method="POST" class="form-horizontal" role="form">
       @method('post')
       @csrf
-      @foreach($driver as $driver1)
-     <div class="row">
+       <div class="row">
         <div class="col-sm-8">
           <div class="row">
             <div class="col-sm-6">
-              <div class="form-group" style="display: none;">
-                <label class="col-sm-12 control-label" for="">Mã số lái xe</label>
+              <div class="form-group">
+                <label class="col-sm-12 d-b c-red control-label" for="">Mã số lái xe</label>
                 <div class="col-sm-12">
-                  <input class="form-control" name="DriverCd" type="text" value="{{$driver1->DriverCd}}">
+                  <input class="form-control" name="DriverNo" type="text" value="{{$driver['DriverNo']}}">
                 </div>
               </div> <!-- end form-group -->
               <div class="form-group">
-                <label class="col-sm-12 control-label" for="">Họ tên lái xe</label>
+                <label class="col-sm-12 d-b c-red control-label" for="">Họ tên lái xe</label>
                 <div class="col-sm-12">
-                  <input class="form-control" name="DriverNm" type="text" value="{{$driver1->DriverNm}}">
-                </div>
-              </div> <!-- end form-group -->
-              <div class="form-group">
-                <label class="col-sm-12 control-label" for="">Ngày sinh</label>
-                <div class="col-sm-12">
-                  <input class="form-control" name="Birthday" type="text" value="{{$driver1->Birthday}}">
+                  <input class="form-control" name="DriverName" type="text" value="{{$driver['DriverName']}}">
                 </div>
               </div> <!-- end form-group --> 
               <div class="form-group">
-                <label class="col-sm-12 control-label" for="">Chứng minh nhân dân</label>
+                <label class="col-sm-12 d-b c-red control-label" for="">Ngày Sinh</label>
+                <div class="col-sm-12"><input class="form-control datepicker-here" name="Birthday" type="text" data-language='en' value="{{$driver['Birthday']}}"></div>
+              </div> <!-- end form-group -->
+              <div class="form-group">
                 <div class="col-sm-12">
-                  <input class="form-control" name="Cmnd" type="text" value="{{$driver1->Cmnd}}">
+                  <label class="control-label d-b c-red">Giới Tính</label>
+                  <select class="form-control" name="Sex">
+                    <option @if( $driver['Sex'] == 1 ){{'selected'}}@endif value="1">Nam</option>
+                    <option @if( $driver['Sex'] == 0 ){{'selected'}}@endif value="0">Nữ</option>
+                  </select>
+                </div>
+              </div> <!-- end form-group -->
+              <div class="form-group">
+                <label class="col-sm-12 d-b c-red control-label" for="">Chứng minh nhân dân</label>
+                <div class="col-sm-12">
+                  <input class="form-control" name="Cmnd" type="text" value="{{$driver['Cmnd']}}">
                 </div>
               </div> <!-- end form-group --> 
             </div>
             <div class="col-sm-6">
               <div class="form-group">
-                <label class="col-sm-12 control-label" for="">Địa chỉ</label>
+                <label class="col-sm-12 d-b c-red control-label" for="">Số điện thoại</label>
                 <div class="col-sm-12">
-                  <input class="form-control" name="Address" type="text" value="{{$driver1->Address}}">
+                  <input class="form-control" name="Phone" type="text" value="{{$driver['Phone']}}">
+                </div>
+              </div> <!-- end form-group -->
+              <div class="form-group d-n">
+                <label class="col-sm-12 c-red control-label" for="">idUser</label>
+                <div class="col-sm-12">
+                  <input class="form-control" name="idUser" type="text" value="{{$driver['idUser']}}">
                 </div>
               </div> <!-- end form-group -->
               <div class="form-group">
-                <label class="col-sm-12 control-label" for="">Ngày vào làm</label>
+                <label class="col-sm-12 d-b c-red control-label" for="">Địa chỉ</label>
                 <div class="col-sm-12">
-                  <input class="form-control" name="DayWork" type="text" value="{{$driver1->DayWork}}">
+                  <input class="form-control" name="Address" type="text" value="{{$driver['Address']}}">
                 </div>
-              </div> <!-- end form-group --> 
+              </div> <!-- end form-group -->
               <div class="form-group">
-                <label class="col-sm-12 control-label" for="">Trạng thái</label>
+                <label class="col-sm-12 d-b c-red control-label" for="">Ngày vào làm</label>
+                <div class="col-sm-12"><input class="form-control datepicker-here" name="FrWork" type="text" data-language='en' value="{{$driver['FrWork']}}"></div>
+              </div> <!-- end form-group -->
+              <div class="form-group">
                 <div class="col-sm-12">
-                  <input class="form-control" name="Status" type="text" value="{{$driver1->Status}}">
+                  <label class="control-label d-b c-red">Trạng thái lái xe</label>
+                  <select class="form-control" name="Status">
+                    <option @if( $driver['Status'] == 0 ){{'selected'}}@endif value="0">Ứng tuyển</option>
+                    <option @if( $driver['Status'] == 1 ){{'selected'}}@endif value="1">Nhân viên</option>
+                    <option @if( $driver['Status'] == 2 ){{'selected'}}@endif value="2">Nghỉ làm</option>
+                  </select>
+                </div>
+              </div> <!-- end form-group -->
+              <div class="form-group">
+                <label class="col-sm-12 d-b control-label" for="">Email</label>
+                <div class="col-sm-12">
+                  <input class="form-control" name="Email" type="text" value="{{$driver['Email']}}">
                 </div>
               </div> <!-- end form-group --> 
              </div>
@@ -104,9 +130,9 @@ sl-active
         <div class="row">
           <div class="col-sm-8">
            <div class="form-group">
-            <label class="col-sm-12 control-label" for="">Ghi chú</label>
+            <label class="col-sm-12 d-b control-label" for="">Ghi chú</label>
             <div class="col-sm-12">
-              <textarea class="form-control" name="Notes" data-maxlength="500" cols="100" rows="8" style="height: 211px;width: 160%;">{{$driver1->Notes}}</textarea>
+              <textarea class="form-control" name="Notes" data-maxlength="500" cols="100" rows="8" style="height: 211px;width: 160%;">{{$driver['Notes']}}</textarea>
             </div>
           </div>
         </div>
@@ -120,7 +146,7 @@ sl-active
         </fieldset>
       </div>
     </div>
-<div class="row">
+  <div class="row">
     <div class="col-sm-8">
       <div class="form-group">
         <div class="col-sm-12 ml-12">
@@ -130,7 +156,6 @@ sl-active
       </div>
     </div>
   </div>
-  @endforeach
 </form>
 </div>
 </div>

@@ -75,7 +75,20 @@ active
         <td>{{$user['username']}}</td>
         <td>{{$user['name']}}</td>
         <td>{{$user['email']}}</td>
-        <td>@if($user['level']==1){{"admin"}}@else{{"normal"}}@endif</td>
+        @switch($user['level'])
+            @case(0)
+                <td>Lái xe</td>
+                @break
+            @case(1)
+                <td>Quản lý</td>
+                @break
+            @case(2)
+                <td>Khách hàng</td>
+                @break
+            @case(3)
+                <td>Điều phối viên</td>
+                @break
+        @endswitch
         <td class="action-button">
           <a class="btn btn-success" data-id="{{$user['id']}}">Info</a>
         </td>
@@ -132,7 +145,7 @@ active
       </div>
       <div class="modal-footer">
        {{--  <a class="btn btn-primary edit" href="">Edit</a> --}}
-        <a class="btn btn-danger" id="btnDelete" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+        <a class="btn btn-warning" id="btnEdit">Edit</a>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -155,19 +168,34 @@ active
         url: app_url+'manager/admin/users/detail/'+id,
         type: 'get',
         success:function(reponse){
-         // console.log(reponse['user'])
          var level = reponse['user'].level;
-         if(level == 1){
-          var position = 'admin';
-        }else {
-          var position = 'normal';
+
+        switch(level) {
+          case 0:
+            var position = 'Lái xe';
+            break;
+          case 1:
+            var position = 'Quản lý';
+            break;
+          case 2:
+            var position = 'Khách hàng';
+            break;
+          case 3:
+            var position = 'Điều phối viên';
+            break;
+          default:
+            var position = 'N/A';
         }
         $('#username').text(reponse['user'].username);
         $('#name').text(reponse['user'].name);
         $('#email').text(reponse['user'].email);
         $('#level').text(position);
-        $('#created_at').text(reponse['user'].created_at);
-        $('#btnDelete').attr('href','{{action('UsersController@getManagerUsers_Delete','')}}'+'/'+reponse['user'].id);
+        if(reponse['user'].created_at == null){
+          $('#created_at').text('N/A');
+        }
+        else{$('#created_at').text(reponse['user'].created_at);}
+
+        $('#btnEdit').attr('href','{{action('UsersController@getManagerUsers_Edit','')}}'+'/'+reponse['user'].id);
       }
     })
     });

@@ -50,13 +50,13 @@ active
       <div class="row">
         <div class="col-sm-4">
           <div class="form-group">
-            <label class="col-sm-12 control-label" for="">Name</label>
+            <label class="col-sm-12 control-label" for="">Họ tên</label>
             <div class="col-sm-12">
               <input class="form-control" name="name" type="text">
             </div>
           </div> <!-- end form-group -->
           <div class="form-group">
-            <label class="col-sm-12 control-label" for="">Username</label>
+            <label class="col-sm-12 control-label" for="">Tài khoản</label>
             <div class="col-sm-12">
               <input class="form-control" name="username" type="text">
             </div>
@@ -71,21 +71,23 @@ active
         <div class="col-sm-4">
           <div class="form-group">
             <div class="col-sm-12">
-              <label class="control-label">Level</label>
+              <label class="control-label">Chức vụ</label>
               <select class="form-control" name="level">
-                <option value="0">normal</option>
-                <option value="1">admin</option>
+                <option value="0">Lái xe</option>
+                <option value="1">Quản lý</option>
+                <option value="2">Khách hàng</option>
+                <option value="3">Điều phối viên</option>
               </select>
             </div>
           </div> <!-- end form-group -->
           <div class="form-group">
-            <label class="col-sm-12 control-label" for="">Password</label>
+            <label class="col-sm-12 control-label" for="">Mật khẩu</label>
             <div class="col-sm-12">
               <input class="form-control" name="password" type="password">
             </div>
           </div> <!-- end form-group -->
           <div class="form-group">
-            <label class="col-sm-12 control-label" for="">Confirm Password</label>
+            <label class="col-sm-12 control-label" for="">Nhập lại mật khẩu</label>
             <div class="col-sm-12"><input class="form-control" name="password_confirmation" type="password"></div>
           </div> <!-- end form-group -->
         </div>

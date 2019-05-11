@@ -24,9 +24,9 @@ class UsersController extends Controller
 		return compact('user');
 	}
 
-	public function getManagerUsers_Delete($id) { 
-		$user = User::find($id);
-		$user->delete();
+	public function getManagerUsers_Edit($id) { 
+		// $user = User::find($id);
+		// $user->delete();
 		return back();
 	}
 	
