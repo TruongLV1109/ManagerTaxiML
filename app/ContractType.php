@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ContractType extends Model
 {
-    //
+    protected $fillable = [
+        'ContractTypeNo', 'ContractTypeName', 'Notes'
+    ];
 }

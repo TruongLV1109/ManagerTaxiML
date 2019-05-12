@@ -14,17 +14,23 @@ class CreateContractsTable extends Migration
     public function up()
     {
         Schema::create('contracts', function (Blueprint $table) {
-            $table->char('ContractCd',10);
-            $table->char('DriverCd',10);
-            $table->char('ContractTypeCd',10);
-            $table->char('ContractSeq',3)->nullable();
-            $table->string('FrDate',8)->nullable();
-            $table->string('ExDate',8)->nullable();
-            $table->integer('Status')->default(0); 
+            $table->increments('id');
+            $table->char('ContractNo',50)->unique();
+            $table->string('ContractName',200);
+            $table->integer('IdDriver')->unsigned();
+            $table->integer('IdContractType')->unsigned();
+            $table->char('ContractSeq',3);
+            $table->date('FrDate');
+            $table->date('ExDate')->nullable();
+            $table->string('FileContent',1000);
             $table->string('Notes',1000)->nullable();
-            $table->foreign('DriverCd')->references('DriverCd')->on('drivers');
-            $table->foreign('ContractTypeCd')->references('ContractTypeCd')->on('contract_types');
-            $table->primary('ContractCd');
+
+            $table->integer('CreMan')->unsigned()->nullable();
+            $table->integer('UpMan')->unsigned()->nullable();
+            $table->foreign('CreMan')->references('id')->on('users');
+            $table->foreign('UpMan')->references('id')->on('users');
+            $table->foreign('IdDriver')->references('id')->on('drivers');
+            $table->foreign('IdContractType')->references('id')->on('contract_types');
             $table->timestamps();
         });
     }

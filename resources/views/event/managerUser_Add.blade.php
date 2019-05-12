@@ -62,6 +62,12 @@ active
             </div>
           </div> <!-- end form-group --> 
           <div class="form-group">
+            <label class="col-sm-12 control-label" for="">Mã người dùng</label>
+            <div class="col-sm-12">
+              <input class="form-control" name="userNo" type="text">
+            </div>
+          </div> <!-- end form-group --> 
+          <div class="form-group">
             <label class="col-sm-12 control-label" for="">Email</label>
             <div class="col-sm-12">
               <input class="form-control" name="email" type="text">

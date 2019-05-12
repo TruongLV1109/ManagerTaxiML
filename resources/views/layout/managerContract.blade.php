@@ -8,7 +8,7 @@ sl-active
 show
 @endsection
 
-@section("menu-manager-ifDriver")
+@section("menu-manager-contract")
 sm-active
 @endsection
 
@@ -18,7 +18,7 @@ sm-active
     <a href="{{route('get.manager')}}">Trang chủ</a>
   </li>
   <li class="breadcrumb-item active">
-    Hồ sơ lái xe
+    Quản lý hợp đồng
   </li> 
 </ol>
 @endsection
@@ -44,7 +44,7 @@ sm-active
         </div>
         <div class="col-sm-5">
           <div class="portlet-title-right">
-            <a class="btn btn-secondary" href="{{route('get.manager.driver.add')}}">
+            <a class="btn btn-secondary" href="{{route('get.manager.contract.add')}}">
              <i class="fa fa-plus"></i> Create </a>
              <button class="btn btn-secondary">
               <i class="fas fa-sync"></i> Reload
@@ -63,55 +63,37 @@ sm-active
               </div>
             </th>
             <th scope="col">STT</th>
+            <th scope="col">Mã số hợp đồng</th>
+            <th scope="col">Tên hợp đồng</th>
             <th scope="col">Mã số lái xe</th>
             <th scope="col">Họ tên lái xe</th>
-            <th scope="col">Ngày sinh</th>
-            <th scope="col">Địa chỉ</th>
-            <th scope="col">Ngày vào làm</th>
-            <th scope="col">Cmnd</th>
-            <th scope="col">Giới tính</th>
-            <th scope="col">Điện thoại</th>
-            <th scope="col">Email</th>
+            <th scope="col">Loại hợp đồng</th>
             <th scope="col">Trạng thái</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
-          @foreach($drivers as $driver)
+          @foreach($contracts as $contract)
           <tr class="tr-info">
             <th scope="row">
               <div class="checkbox checkbox-primary">
-                <input type="checkbox" class="check" name="check[]" value="{{$driver['id']}}">
+                <input type="checkbox" class="check" name="check[]" value="{{$contract->id}}">
               </div>
             </th>
             <td>{{++$stt}}</td>
-            <td>{{$driver["DriverNo"]}}</td>
-            <td>{{$driver["DriverName"]}}</td>
-            <td>{{$driver["Birthday"]}}</td>
-            <td>{{$driver["Address"]}}</td>
-            <td>{{$driver["FrWork"]}}</td>
-            <td>{{$driver["Cmnd"]}}</td>
-            @if($driver["Sex"]==1)
-              <td>Nam</td>
+            <td>{{$contract->ContractNo}}</td>
+            <td>{{$contract->ContractName}}</td>
+            <td>{{$contract->DriverNo}}</td>
+            <td>{{$contract->DriverName}}</td>
+            <td>{{$contract->ContractTypeName}}</td>
+            @if($contract->status == 1)
+              <td style="color: red;">Hết hiệu lực</td>
             @else
-              <td>Nữ</td>
+              <td style="color: blue;">Còn hiệu lực</td>
             @endif
-            <td>{{$driver["Phone"]}}</td>
-            <td>{{$driver["Email"]}}</td>
-            @switch($driver["Status"])
-                @case(0)
-                    <td style="color: blue;">Ứng tuyển</td>
-                    @break
-                @case(1)
-                    <td style="color: green;">Nhân viên</td>
-                    @break
-                @case(2)
-                    <td style="color: red;">Nghỉ làm</td>
-                    @break
-            @endswitch
             <td class="action-button">
-              <a class="btn btn-primary" href="{{action('DriverController@getManagerDriver_Edit',$driver['id'])}}"><i class="fa fa-edit"></i></a>
-              <a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');" href="{{action('DriverController@getManagerDriver_Delete',$driver['id'])}}"><i class="fa fa-trash"></i></a>
+              <a class="btn btn-primary" href="{{action('ContractController@getManagerContract_Edit',$contract->id)}}"><i class="fa fa-edit"></i></a>
+              <a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');" href="{action('ContractController@getManagerContract_Delete',$contracts['id'])}}"><i class="fa fa-trash"></i></a>
             </td>
           </tr>
           @endforeach

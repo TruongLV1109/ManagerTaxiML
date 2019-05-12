@@ -47,21 +47,21 @@
 							<a class="nav-link" href="{{route('get.manager.giveBack')}}" data-parent="#menu1"><i class="fa fa-tasks"></i><span>Danh sách đen</span></a>
 						</li>
 					</div>
-					<li class="nav-item @yield("menu-manager-borrowGiveBack")">
+					<li class="nav-item @yield("menu-manager-driver")">
 						<a href="#menu2" class="nav-link collapsed" data-toggle="collapse" aria-expanded=@section('booleanAria')"false"@show>
 							<i class="far fa-calendar-alt"></i>
 							<span>Quản lý lái xe</span>
 						</a>
 					</li>
-					<div class="collapse @yield("collapseBorrowGiveBack")" id="menu2">
-						<li class="nav-item @yield("menu-manager-driver")">
+					<div class="collapse @yield("collapseDriver")" id="menu2">
+						<li class="nav-item @yield("menu-manager-ifDriver")">
 						<a class="nav-link" href="{{route('get.manager.driver')}}">
 							<i class="fas fa-book"></i>
 							<span class="hidden-sm-down">Hồ sơ lái xe</span>
 						</a>
 						</li>
-						<li class="nav-item @yield("menu-manager-readers")">
-							<a class="nav-link" href="{{route('get.manager.readers')}}" data-parent="#menu2"><i class="fas fa-book-reader"></i><span>Quản lý hợp đồng</span></a>
+						<li class="nav-item @yield("menu-manager-contract")">
+							<a class="nav-link" href="{{route('get.manager.contract')}}" data-parent="#menu2"><i class="fas fa-book-reader"></i><span>Quản lý hợp đồng</span></a>
 						</li>
 						<li class="nav-item @yield("menu-manager-publisher")">
 							<a class="nav-link" href="{{route('get.manager.publisher')}}" data-parent="#menu2"><i class="fas fa-user-tie"></i><span>Quản lý giấp phép</span></a>

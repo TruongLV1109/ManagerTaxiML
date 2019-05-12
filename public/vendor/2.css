@@ -328,6 +328,15 @@ ul.navbar-nav.animate.side-nav.page-sider-menu li.nav-item a.nav-link[aria-expan
     display: none;
   }
 
+  .vi-h {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  li.nav-item.sm-active>a {
+    background-color: #3a4350;
+}
+
   
   .action-button a.btn.btn-primary.waves-effect.waves-light {
     width: 49px;

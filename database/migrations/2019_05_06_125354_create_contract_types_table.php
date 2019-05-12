@@ -14,10 +14,10 @@ class CreateContractTypesTable extends Migration
     public function up()
     {
         Schema::create('contract_types', function (Blueprint $table) {
-            $table->char('ContractTypeCd',10);
-            $table->string('ContractTypeNm',200)->nullable();
+            $table->increments('id');
+            $table->char('ContractTypeNo',50)->unique();
+            $table->string('ContractTypeName',200);
             $table->string('Notes',1000)->nullable();
-            $table->primary('ContractTypeCd');
             $table->timestamps();
         });
     }

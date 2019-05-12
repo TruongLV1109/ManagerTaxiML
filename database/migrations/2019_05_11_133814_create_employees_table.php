@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDriversTable extends Migration
+class CreateEmployeesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,23 @@ class CreateDriversTable extends Migration
      */
     public function up()
     {
-        Schema::create('drivers', function (Blueprint $table) {
+        Schema::create('employees', function (Blueprint $table) {
             $table->increments('id');
-            $table->char('DriverNo',50)->unique();
-            $table->string('DriverName',200);
-            $table->date('Birthday');
+            $table->char('EmployeeNo',50)->unique();
+            $table->string('EmployeeName',200);
             $table->string('Address',500);
+            $table->date('Birthday');
             $table->date('FrWork');
             $table->string('Cmnd',50);
             $table->boolean('Sex')->nullable();
             $table->string('Phone',50)->unique();
-            $table->integer('idUser')->unsigned();
+            $table->integer('level');
+            $table->integer('idUser')->unsigned()->nullable();
             $table->string('Email',200)->nullable();
+            $table->string('Avatar',500)->nullable();
             $table->integer('Status')->nullable();
             $table->string('Notes',1000)->nullable();
-            $table->string('Avatar',500)->nullable();
+
             $table->integer('CreMan')->unsigned()->nullable();
             $table->integer('UpMan')->unsigned()->nullable();
             $table->foreign('CreMan')->references('id')->on('users');
@@ -44,6 +46,6 @@ class CreateDriversTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('drivers');
+        Schema::dropIfExists('employees');
     }
 }

@@ -61,6 +61,8 @@ active
             <th scope="col">Địa Chỉ</th>
             <th scope="col">Giới Tính</th>
             <th scope="col">Số Điện Thoại</th>
+            <th scope="col">Ngày vào làm</th>
+            <th scope="col">Chức vụ</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -73,14 +75,33 @@ active
                 </div>
               </th>
               <td>{{++$stt}}</td>
-              <td>{{$employees['maSoNV']}}</td>
-              <td>{{$employees['hoTenNV']}}</td>
-              <td>{{$employees['diaChiNV']}}</td>
-              <td>{{$employees['gioiTinhNV']}}</td>
-              <td>{{$employees['soDTNV']}}</td>
+              <td>{{$employees['EmployeeNo']}}</td>
+              <td>{{$employees['EmployeeName']}}</td>
+              <td>{{$employees['Address']}}</td>
+              @if($employees["Sex"]==1)
+                <td>Nam</td>
+              @else
+                <td>Nữ</td>
+              @endif
+              <td>{{$employees['Phone']}}</td>
+              <td>{{$employees['FrWork']}}</td>
+               @switch($employees['level'])
+                  @case(0)
+                      <td>Lái xe</td>
+                      @break
+                  @case(1)
+                      <td>Quản lý</td>
+                      @break
+                  @case(2)
+                      <td>Khách hàng</td>
+                      @break
+                  @case(3)
+                      <td>Điều phối viên</td>
+                      @break
+              @endswitch
               <td class="action-button">
-                 <a class="btn btn-primary" href="{{action('EmployeesController@getManagerEmployees_Edit',$employees['id'])}}"><i class="fa fa-edit"></i></a>
-                <a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');" href="{{action('EmployeesController@getManagerEmployees_Delete',$employees['id'])}}"><i class="fa fa-trash"></i></a>
+                 <a class="btn btn-primary" href="{action('EmployeesController@getManagerEmployees_Edit',$employees['id'])}}"><i class="fa fa-edit"></i></a>
+                <a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');" href="{action('EmployeesController@getManagerEmployees_Delete',$employees['id'])}}"><i class="fa fa-trash"></i></a>
               </td>
             </tr>
            @endforeach

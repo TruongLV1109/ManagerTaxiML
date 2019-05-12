@@ -36,10 +36,10 @@ class UsersController extends Controller
 	}
 
 	public function postManagerUsers_Add(Request $request) {
-
 		$user = $this->validate(request(), [
 			'name' => 'required|string|max:255',
-			'email' => 'required|string|email|max:255',
+			'userNo'=>'required|string|max:50',
+			'email' => 'nullable|email|max:255',
 			'level' => 'required|numeric',
 			'username' => 'required|max:50|unique:users',
 			'password' => 'required|string|min:6|confirmed'
@@ -55,6 +55,7 @@ class UsersController extends Controller
 		],
 		[
 			'name' => 'Name',
+			'userNo'=>'Mã người dùng',
 			'email' => 'Email',
 			'level' => 'Level',
 			'username' => 'Username',

@@ -19,7 +19,6 @@ Route::get('login','LoginController@getAdminLogin')->name('get.login');
 Route::get('logout','LoginController@getAdminLogout')->name('get.logout');
 Route::post('login','LoginController@postAdminLogin');
 
-
 Route::group(['prefix'=>'manager','middleware'=>'login'], function() {
 	Route::get('','ManagerController@getManager')->name('get.manager');
 
@@ -33,6 +32,17 @@ Route::group(['prefix'=>'manager','middleware'=>'login'], function() {
 		// Route::post('Edit/{id}','DriverController@postManagerBook_Edit')->name('post.manager.book.edit');
 		// Route::post('','DriverController@postManagerBook_Search')->name('post.manager.book.search');
 	});
+
+	Route::group(['prefix'=>'Contract'], function() {
+		Route::get('','ContractController@getManagerContract')->name('get.manager.contract');
+		Route::get('Add','ContractController@getManagerContract_Add')->name('get.manager.contract.add');
+		Route::get('Edit/{id}','ContractController@getManagerContract_Edit')->name('get.manager.contract.edit');
+		Route::get('Delete/{id}','ContractController@getManagerContract_Delete')->name('get.manager.contract.delete');
+		 Route::post('Add','ContractController@postManagerContract_Add')->name('post.manager.contract.add');
+		// Route::post('Edit/{id}','ContractController@postManagerBook_Edit')->name('post.manager.book.edit');
+		// Route::post('','ContractController@postManagerBook_Search')->name('post.manager.book.search');
+	});
+
 
 	route::group(['prefix'=>'Readers'], function() {
 		Route::get('','ReadersController@getManagerReaders')->name('get.manager.readers');

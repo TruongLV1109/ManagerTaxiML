@@ -26,7 +26,7 @@
             <h2 class="text-center">Login Manager</h2>
             <div class="form-group">
               <label class="text-uppercase">Username</label>
-              <input type="text" class="form-control" id="userName" value="godzilla" name="username" placeholder="">
+              <input type="text" class="form-control" id="userName" value="admin" name="username" placeholder="">
             </div>
             <div class="form-group">
               <label class="text-uppercase">Password</label>

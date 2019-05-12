@@ -40,28 +40,6 @@ active
         </div>
       </div>
     </div>
-    {{-- <div class="col-sm-6 col-md-6 col-lg-6 mt-6">
-      <div class="card">
-        <div class="form-group">
-          <label class="col-sm-4 control-label" for="">User Name</label>
-          <div class="col-sm-12">
-            <input class="form-control" name="maSoSach" type="text">
-          </div>
-        </div> <!-- end form-group -->
-        <div class="form-group">
-          <label class="col-sm-12 control-label" for="">Tên Sách</label>
-          <div class="col-sm-12">
-            <input class="form-control" name="tenSach" type="text">
-          </div>
-        </div> <!-- end form-group --> 
-        <div class="form-group">
-          <label class="col-sm-12 control-label" for="">Tác Giả</label>
-          <div class="col-sm-12">
-            <input class="form-control" name="tacGia" type="text">
-          </div>
-        </div> <!-- end form-group --> 
-      </div>
-    </div> --}}
   </div>
 </div>
 @endsection
